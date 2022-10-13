@@ -1,5 +1,8 @@
+// React
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+
+// Component
 import Login from "./components/Login/Login.tsx";
 import MainPage from "./components/Main/MainPage.tsx";
 

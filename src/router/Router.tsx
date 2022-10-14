@@ -3,8 +3,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 // Component
-import Login from "./pages/Login/Login.tsx";
-import MainPage from "./pages/Main/MainPage.tsx";
+import Login from "../pages/Login/Login.tsx";
+import MainPage from "../pages/Main/MainPage.tsx";
 
 function Router() {
   return (

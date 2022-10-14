@@ -2,7 +2,7 @@
 import { BrowserRouter } from "react-router-dom";
 
 // Router
-import Router from "./Router.tsx";
+import Router from "./router/Router.tsx";
 
 function App() {
   return (

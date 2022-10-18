@@ -1,10 +1,17 @@
 // React
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 // Library
 import sprintfjs from "sprintf-js";
 
 function Login() {
+  const { search } = useLocation(); // 쿼리 파라미터 추출
+  // 쿼리 파라미터 속 사용자 로그인 code 값 추출
+  const getCode = useCallback(() => {
+    return search.split("=")[1];
+  }, [search]);
+
   // cognito 로그인 페이지
   const replaceLoginPage = () => {
     window.location.replace(
@@ -17,7 +24,10 @@ function Login() {
   };
 
   useEffect(() => {
-    replaceLoginPage();
+    const code = getCode();
+    if (!code) {
+      replaceLoginPage();
+    }
   }, []);
 
   return <div>Login</div>;

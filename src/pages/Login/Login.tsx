@@ -4,6 +4,10 @@ import { useLocation } from "react-router-dom";
 
 // Library
 import sprintfjs from "sprintf-js";
+import { cloneDeep } from "lodash";
+
+// Api
+import { GetNewTokens } from "../../api/cognito.ts";
 
 function Login() {
   const { search } = useLocation(); // 쿼리 파라미터 추출
@@ -23,10 +27,23 @@ function Login() {
     );
   };
 
+  // 사용자 토큰 정보 api 호출 후 액션 디스패치
+  const getUserToken = async (code: string) => {
+    if (!code) return;
+    await GetNewTokens(code)
+      .then((res) => {
+        const tokenData = cloneDeep(res.data);
+        console.log(tokenData);
+      })
+      .catch((error) => console.error(error));
+  };
+
   useEffect(() => {
     const code = getCode();
     if (!code) {
       replaceLoginPage();
+    } else {
+      getUserToken(code);
     }
   }, []);
 

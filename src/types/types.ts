@@ -6,3 +6,8 @@ export interface CognitoTokenType {
   refresh_token: string;
   token_type: string;
 }
+
+// user Reducer 상태 타입
+export interface UserStateType {
+  token: CognitoTokenType;
+}

@@ -11,3 +11,8 @@ export interface CognitoTokenType {
 export interface UserStateType {
   token: CognitoTokenType;
 }
+
+// 전체 Store 상태 타입
+export interface StoreStateType {
+  user: UserStateType;
+}
